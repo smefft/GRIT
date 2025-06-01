@@ -15,10 +15,3 @@ npm run dev
 ```
 
 3. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-## Technologies Used
-
-- Next.js
-- React
-- TypeScript
-- Tailwind CSS

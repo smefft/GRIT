@@ -5,9 +5,54 @@
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 255, 255, 255;
+  --gradient-primary: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);
+  --gradient-secondary: linear-gradient(135deg, #6C63FF 0%, #FF6584 100%);
+  --gradient-accent: linear-gradient(135deg, #845EC2 0%, #D65DB1 50%, #FF6F91 100%);
+  --gradient-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
 }
 
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
+}
+
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-gray-900 to-gray-800 text-gray-100 min-h-screen;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl;
+  }
+  
+  .gradient-border {
+    position: relative;
+    background-clip: padding-box;
+    border: 1px solid transparent;
+  }
+  
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    margin: -1px;
+    border-radius: inherit;
+    background: var(--gradient-primary);
+  }
+
+  .modern-input {
+    @apply bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-gray-100 placeholder-gray-400 
+    focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent;
+  }
+
+  .gradient-text {
+    @apply text-transparent bg-clip-text;
+    background-image: var(--gradient-primary);
+  }
 } 

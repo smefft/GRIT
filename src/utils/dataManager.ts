@@ -2,13 +2,13 @@ import { DatasetMetadata } from '@/types/dataset';
 
 export const DATA_DIRECTORY = '/data';
 
-export const getDataPath = (year: string) => `${DATA_DIRECTORY}/EJI_${year}`;
+export const getDataPath = (year: string) => `${DATA_DIRECTORY}/EJI_DATA_${year}`;
 
 export const getDataDictionaryPath = (year: string) => 
   `${getDataPath(year)}/EJI_DATADICTIONARY_${year}.json`;
 
 export const getDataFilePath = (year: string) => 
-  `${getDataPath(year)}/EJI_DATA_${year}.json`;
+  `${getDataPath(year)}/EJI_${year}_United_States.json`;
 
 export const validateDataFiles = async (year: string): Promise<boolean> => {
   try {

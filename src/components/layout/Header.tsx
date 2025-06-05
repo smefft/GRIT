@@ -11,17 +11,17 @@ interface HeaderProps {
 
 export default function Header({ selectedDataset, onSelect, datasets }: HeaderProps) {
   return (
-    <header className="border-b border-gray-200">
+    <header className="relative border-b border-white/10 backdrop-blur-sm bg-black/20">
       <div className="max-w-[1400px] mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-1.5 h-6 bg-emerald-500" />
-            <h1 className="text-xl font-light tracking-tight">GRIT Lab</h1>
+          <div className="flex items-center gap-3">
+            <div className="w-1.5 h-8 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full" />
+            <h1 className="text-2xl font-light tracking-tight text-white">GRIT Lab</h1>
           </div>
           <div className="flex items-center space-x-6">
             <button
               onClick={() => onSelect(null)}
-              className="text-gray-600 hover:text-gray-900 text-sm"
+              className="text-gray-300 hover:text-white transition-colors text-sm font-medium"
             >
               Home
             </button>

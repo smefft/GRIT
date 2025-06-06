@@ -12,9 +12,9 @@ export default function DatasetInfo({ dataset, onYearChange }: DatasetInfoProps)
   return (
     <div className="space-y-6">
       <div>
-        <div className="flex items-center gap-2 mb-2">
-          <div className="w-2 h-2 rounded-full bg-emerald-500" />
-          <h3 className="text-xl font-medium">
+        <div className="flex items-center gap-3 mb-3">
+          <div className="w-1 h-6 rounded-full" style={{ background: 'var(--color-gold)' }} />
+          <h3 className="text-xl font-medium text-gray-900">
             {dataset.name}
           </h3>
         </div>
@@ -29,11 +29,12 @@ export default function DatasetInfo({ dataset, onYearChange }: DatasetInfoProps)
             <button
               key={year}
               onClick={() => onYearChange(year)}
-              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                 dataset.year === year
-                  ? 'bg-emerald-100 text-emerald-700'
+                  ? 'text-white shadow-sm'
                   : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
               }`}
+              style={dataset.year === year ? { background: 'var(--color-gold)', border: '2px solid var(--color-gold)' } : {}}
             >
               {year}
             </button>
@@ -45,15 +46,15 @@ export default function DatasetInfo({ dataset, onYearChange }: DatasetInfoProps)
         <h4 className="text-sm font-medium text-gray-900 mb-4">Data Domains</h4>
         <div className="space-y-3">
           <div className="flex items-center gap-2">
-            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+            <div className="w-1.5 h-1.5 rounded-full bg-primary" />
             <span className="text-sm text-gray-600">Environmental Burden</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+            <div className="w-1.5 h-1.5 rounded-full bg-primary" />
             <span className="text-sm text-gray-600">Social Vulnerability</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+            <div className="w-1.5 h-1.5 rounded-full bg-primary" />
             <span className="text-sm text-gray-600">Health Vulnerability</span>
           </div>
         </div>
@@ -61,7 +62,7 @@ export default function DatasetInfo({ dataset, onYearChange }: DatasetInfoProps)
 
       <div className="pt-6 border-t border-gray-200">
         <button
-          className="flex items-center gap-2 px-4 py-2 bg-emerald-50 text-emerald-700 rounded-md hover:bg-emerald-100 transition-colors"
+          className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:opacity-90 transition-all duration-200 shadow-sm"
           onClick={() => {
             // Download functionality will be implemented later
             console.log('Download clicked');

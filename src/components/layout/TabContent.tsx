@@ -3,6 +3,7 @@
 import { DatasetMetadata } from '@/types/dataset';
 import VisualizationTab from '../visualization/VisualizationTab';
 import DataDictionary from '../dataset/DataDictionary';
+import TabNavigation from '../navigation/TabNavigation';
 
 interface TabContentProps {
   activeTab: 'visualization' | 'dictionary';

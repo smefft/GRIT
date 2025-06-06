@@ -84,9 +84,9 @@ export default function DataDictionary({ dataset }: DataDictionaryProps) {
   if (!dictionary?.data) {
     return (
       <div className="p-6">
-        <div className="bg-yellow-50 border border-yellow-200 rounded-md p-4">
-          <div className="text-yellow-800">No data available</div>
-          <div className="text-sm text-yellow-600 mt-1">
+        <div className="bg-yellow-50 rounded-md p-4" style={{ border: '2px solid var(--color-gold)' }}>
+          <div style={{ color: 'var(--color-gold)', fontWeight: 600 }}>No data available</div>
+          <div className="text-sm mt-1" style={{ color: 'var(--color-gold)' }}>
             The data dictionary structure appears to be invalid or empty.
           </div>
         </div>
@@ -107,16 +107,11 @@ export default function DataDictionary({ dataset }: DataDictionaryProps) {
   });
 
   return (
-    <div className="p-6">
+    <div className="p-6 h-full flex flex-col">
       <div className="mb-6">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-semibold text-gray-900">
             Data Dictionary
-            {dataset.description && (
-              <span className="text-sm font-normal text-gray-500 ml-2">
-                ({dataset.description})
-              </span>
-            )}
           </h2>
           <div className="relative">
             <input
@@ -143,43 +138,45 @@ export default function DataDictionary({ dataset }: DataDictionaryProps) {
         </div>
       </div>
 
-      <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
-            <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Variable Name
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Description
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Module
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Domain
-              </th>
-            </tr>
-          </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
-            {filteredData.map((item: any, index: number) => (
-              <tr key={index} className="hover:bg-gray-50">
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                  {item[columns.variableName]}
-                </td>
-                <td className="px-6 py-4 text-sm text-gray-500">
-                  {item[columns.variableDescription]}
-                </td>
-                <td className="px-6 py-4 text-sm text-gray-500">
-                  {item[columns.module]}
-                </td>
-                <td className="px-6 py-4 text-sm text-gray-500">
-                  {item[columns.domain]}
-                </td>
+      <div className="flex-1 overflow-hidden border border-gray-200 rounded-lg">
+        <div className="h-[calc(100vh-300px)] overflow-auto custom-scrollbar">
+          <table className="min-w-full divide-y divide-gray-200">
+            <thead className="bg-gray-50 sticky top-0 z-10">
+              <tr>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Variable
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Description
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Module
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Domain
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {filteredData.map((item: any, index: number) => (
+                <tr key={index} className="hover:bg-gray-50">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    {item[columns.variableName]}
+                  </td>
+                  <td className="px-6 py-4 text-sm text-gray-500">
+                    {item[columns.variableDescription]}
+                  </td>
+                  <td className="px-6 py-4 text-sm text-gray-500">
+                    {item[columns.module]}
+                  </td>
+                  <td className="px-6 py-4 text-sm text-gray-500">
+                    {item[columns.domain]}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
